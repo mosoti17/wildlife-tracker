@@ -16,7 +16,7 @@ private Timestamp sighted;
         this.animalId=animalId;
         this.location=location;
         this.rangerName=rangerName;
-        
+
     }
     public int getAnimalId(){
         return animalId;
@@ -49,7 +49,7 @@ private Timestamp sighted;
         try(Connection con = DB.sql2o.open()) {
           return con.createQuery(sql)
           .executeAndFetch(Sighting.class);
-        }       
+        }
     }
     public void save() {
         try(Connection con = DB.sql2o.open()) {
@@ -71,6 +71,6 @@ private Timestamp sighted;
           return Sighting;
         }
       }
-      
+
 
 }

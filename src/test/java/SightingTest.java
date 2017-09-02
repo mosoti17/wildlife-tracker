@@ -1,9 +1,11 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.sql2o.*;
+
 import java.sql.Timestamp;
 import java.util.Date;
 import java.text.DateFormat;
+
 /**
  * name
  */
@@ -15,6 +17,7 @@ public class SightingTest {
       Sighting testSighting = new Sighting( 1 , " north","john");
       assertEquals(true, testSighting instanceof Sighting);
     }
+
     @Test
     public void equals_sightingsAreTheSame_true() {
         Sighting testSighting1 = new Sighting( 1 , " north","john");
@@ -42,7 +45,8 @@ public class SightingTest {
             testSighting1.save();
             Sighting testSighting2 = new Sighting( 2 , "south","Steve");
             testSighting2.save();
-            assertEquals(Sighting.find(testSighting2.getId()),testSighting2);  
+            assertEquals(Sighting.find(testSighting2.getId()),testSighting2);
           }
-         
+
+
 }
