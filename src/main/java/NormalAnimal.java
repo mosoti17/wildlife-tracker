@@ -48,4 +48,5 @@ public static NormalAnimal find(int id) {
       return animal;
     }
   }
+  
 }

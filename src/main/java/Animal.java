@@ -56,7 +56,7 @@ public abstract class Animal {
           String sql = "SELECT * FROM sightings where animalid=:id";
           return con.createQuery(sql)
             .addParameter("id", this.id)
-            .executeAndFetch(Animal.class);
+            .executeAndFetch(Sighting.class);
         }
       }
       

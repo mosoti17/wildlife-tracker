@@ -1,6 +1,8 @@
 import java.sql.Timestamp;
 import java.util.List;
 import org.sql2o.*;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * Sighting
  */
@@ -69,13 +71,6 @@ private Timestamp sighted;
           return Sighting;
         }
       }
-    //   public List<Animal> getAnimals(){
-    //     try(Connection con = DB.sql2o.open()) {
-    //       String sql = "SELECT * FROM animals where id=:id";
-    //       return con.createQuery(sql)
-    //         .addParameter("id", this.animalId)
-    //         .executeAndFetch(Animal.class);
-    //     }
-    //   }
+      
 
 }
