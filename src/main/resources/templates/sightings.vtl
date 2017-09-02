@@ -1,7 +1,33 @@
 <h1>Animal Sightings</h1>
-<form action="index.html" method="post">
+<form action="/sightings" method="post">
   <div >
-    <label for=""></label>
-    <input type="text" name="" class="form-control">
+    <label for="rangername">Ranger Name</label>
+    <input type="text" name="rangerName" class="form-control">
   </div>
+  <div >
+    <label for="location">Where was the Animal Seen</label>
+    <select  name='location' type='text'>
+          <option value="north">North Quadrant</option>
+          <option value="east">East Quadrant</option>
+          <option value="west">West Quadrant</option>
+          <option value="south">South Quadrant</option>
+          <option value="north east">North east Quadrant</option>
+          <option value="north west">North west Quadrant</option>
+          <option value="south east">South east Quadrant</option>
+          <option value="south west">South west Quadrant</option>
+      </select>
+  </div>
+  <div >
+    <label for="animalid"> Animal Seen</label>
+    <select  name='animalId' type='text'>
+      #foreach($animal in $endangeredanimals)
+        <option value="$animal.getId()">$animal.getName()</option>
+      #end
+      #foreach($animal in $normalanimals)
+        <option value="$animal.getId()">$animal.getName()</option>
+      #end
+
+      </select>
+  </div>
+  <br><button type="submit" class="btn btn-success" >Add Endangered Animal</button>
 </form>
