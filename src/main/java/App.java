@@ -48,5 +48,27 @@ public class App{
         model.put("template", "templates/index.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
+      get("/normalanimals/:id", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        NormalAnimal animal =NormalAnimal.find(Integer.parseInt(request.params(":id")));
+        model.put("animal", animal);
+        model.put("template", "templates/normalanimal.vtl");
+        return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
+      get("/endangeredanimals/:id", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        EndangeredAnimal endangeredanimal =EndangeredAnimal.find(Integer.parseInt(request.params(":id")));
+        model.put("animal", endangeredanimal);
+        model.put("template", "templates/endangeredanimal.vtl");
+        return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
+      get("/sightings", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("normalanimals", sightings.all());
+        model.put("normalanimals", NormalAnimal.all());
+        model.put("endangeredanimals", EndangeredAnimal.all());
+        model.put("template", "templates/sightings.vtl");
+        return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
   }
 }

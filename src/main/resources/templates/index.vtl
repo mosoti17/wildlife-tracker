@@ -39,13 +39,13 @@
   <div class="col-md-4">
     <h2>Normal Animals</h2>
     #foreach($animal in $normalanimals)
-    <li><a href="#"></a>$animal.getName()</li>
+    <li><a href="/normalanimals/$animal.getId()">$animal.getName()</a></li>
     #end
   </div>
   <div class="col-md-4">
     <h2>Endangered Animals</h2>
     #foreach($animal in $endangeredanimals)
-    <li><a href="#"></a>$animal.getName()</li>
+    <li><a href="/endangeredanimals/$animal.getId()">$animal.getName()</a></li>
     #end
   </div>
 

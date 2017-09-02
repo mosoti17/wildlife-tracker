@@ -59,6 +59,7 @@ public abstract class Animal {
             .executeAndFetch(Sighting.class);
         }
       }
+    
       
 
 }
