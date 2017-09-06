@@ -50,6 +50,7 @@ public class App{
       get("/normalanimals/:id", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
         NormalAnimal animal =NormalAnimal.find(Integer.parseInt(request.params(":id")));
+        model.put("sighting", Sighting.all());
         model.put("animal", animal);
         model.put("template", "templates/normalanimal.vtl");
         return new ModelAndView(model, layout);
@@ -57,6 +58,7 @@ public class App{
       get("/endangeredanimals/:id", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
         EndangeredAnimal endangeredanimal =EndangeredAnimal.find(Integer.parseInt(request.params(":id")));
+        model.put("sighting", Sighting.all());
         model.put("animal", endangeredanimal);
         model.put("template", "templates/endangeredanimal.vtl");
         return new ModelAndView(model, layout);
