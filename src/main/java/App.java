@@ -29,6 +29,7 @@ public class App{
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
     post("/", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
         String age = request.queryParams("age");
@@ -81,5 +82,45 @@ public class App{
           model.put("template", "templates/index.vtl");
           return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
+        post("/normalanimals/:id", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
+          NormalAnimal normalAnimal = NormalAnimal.find(Integer.parseInt(request.params(":id")));
+          String name = request.queryParams("name");
+
+          normalAnimal.update(name);
+          String url = String.format("/normalanimals/%d", normalAnimal.getId());
+          response.redirect(url);
+          return new ModelAndView(model, layout);
+         }, new VelocityTemplateEngine());
+
+         post("/endangeredanimals/:id", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
+          EndangeredAnimal endangeredAnimal = EndangeredAnimal.find(Integer.parseInt(request.params(":id")));
+          String name = request.queryParams("name");
+          String age = request.queryParams("age");
+          String health = request.queryParams("health");
+          endangeredAnimal.update(name,age,health);
+          String url = String.format("/endangeredanimals/%d", endangeredAnimal.getId());
+          response.redirect(url);
+          return new ModelAndView(model, layout);
+         }, new VelocityTemplateEngine());
+         post("/endangeredanimals/:id/delete", (request, response) -> {
+        HashMap<String, Object> model = new HashMap<String, Object>();
+        EndangeredAnimal endangeredAnimal = EndangeredAnimal.find(Integer.parseInt(request.params(":id")));
+        endangeredAnimal.delete();
+        model.put("normalanimals", NormalAnimal.all());
+        model.put("endangeredanimals", EndangeredAnimal.all());
+        model.put("template", "templates/index.vtl");
+        return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
+      post("/normalanimals/:id/delete", (request, response) -> {
+     HashMap<String, Object> model = new HashMap<String, Object>();
+    NormalAnimal normalAnimal = NormalAnimal.find(Integer.parseInt(request.params(":id")));
+     normalAnimal.delete();
+     model.put("normalanimals", NormalAnimal.all());
+     model.put("endangeredanimals", EndangeredAnimal.all());
+     model.put("template", "templates/index.vtl");
+     return new ModelAndView(model, layout);
+   }, new VelocityTemplateEngine());
   }
 }

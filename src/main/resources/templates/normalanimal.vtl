@@ -1,4 +1,16 @@
 <h1>$animal.getName()</h1>
+
+<form  action="/normalanimals/$animal.getId()" method="post">
+  <div >
+    <label for="name">Animals Name</label>
+    <input type="text" name="name" class="form-control">
+  </div>
+  <br><button type="submit" class="btn btn-success" >Update Animal</button>
+</form>
+<form action="/normalanimals/$animal.getId()/delete" method="post">
+    <br><br><button type="submit" class="btn btn-danger  btn-lg" id="delete">Delete Animal</button>
+</form>
+
 #foreach($sight in $animal.getSightings())
   <li>$sight.getLocation()</li>
   <li>$sight.getSighted()</li>

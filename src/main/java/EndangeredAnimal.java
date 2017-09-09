@@ -11,9 +11,9 @@ public class EndangeredAnimal extends Animal implements DatabaseManagement{
         this.age = age;
         this.health =health;
         type = DATABASE_TYPE;
-        
+
     }
-    
+
     public void save() {
         try(Connection con = DB.sql2o.open()) {
           String sql = "INSERT INTO animals (name,age,health, type) VALUES (:name,:age, :health, :type)";
@@ -31,7 +31,7 @@ public class EndangeredAnimal extends Animal implements DatabaseManagement{
         try(Connection con = DB.sql2o.open()) {
           return con.createQuery(sql)
           .executeAndFetch(EndangeredAnimal.class);
-        }     
+        }
 }
 public static EndangeredAnimal find(int id) {
     try(Connection con = DB.sql2o.open()) {
@@ -49,6 +49,17 @@ public static EndangeredAnimal find(int id) {
       return con.createQuery(sql)
         .addParameter("id", this.id)
         .executeAndFetch(Sighting.class);
+    }
+  }
+  public void update(String name,String age, String health){
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE animals SET name = :name, age=:age,health=:health WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("name", name)
+        .addParameter("age", age)
+        .addParameter("health", health)
+        .addParameter("id", id)
+        .executeUpdate();
     }
   }
 

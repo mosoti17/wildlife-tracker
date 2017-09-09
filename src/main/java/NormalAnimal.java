@@ -48,5 +48,14 @@ public static NormalAnimal find(int id) {
       return animal;
     }
   }
+  public void update(String name){
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE animals SET name = :name WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("name", name)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
   
 }

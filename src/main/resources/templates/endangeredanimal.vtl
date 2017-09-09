@@ -1,7 +1,40 @@
-<h1>$animal.getName()</h1>
-<h3>$animal.getAge()</h3>
-<h3>$animal.getHealth()</h3>
+<h1 class="text-uppercase">$animal.getName() Page</h1>
+<h3> Age: $animal.getAge()</h3>
+<h3>Health: $animal.getHealth()</h3>
+
+<form action="/endangeredanimals/$animal.getId()" method="post">
+  <div >
+    <label for="name">Animals Name</label>
+    <input type="text" name="name" class="form-control">
+  </div>
+  <div >
+    <label for="age">Aproximate Age</label><br>
+    <select  name='age' type='text' id="age">
+          <option value="newborn">0 monts to 6 monts</option>
+          <option value="young">7 monts to 4 years</option>
+          <option value="Adult">7 monts to 4 years</option>
+      </select>
+  </div>
+  <div >
+    <label for="health">Health</label><br>
+    <select  name='health' type='text' id="health">
+          <option value="healty">Healty</option>
+          <option value="ill">Ill</option>
+          <option value="okay">Okay</option>
+      </select>
+  </div>
+  <br><button type="submit" class="btn btn-success" >Update Animal</button>
+</form>
+
+<form action="/endangeredanimals/$animal.getId()/delete" method="post">
+    <br><br><button type="submit" class="btn btn-danger  btn-lg" id="delete">Delete Animal</button>
+</form>
+</div>
+
+<h1>$animal.getName()'s Sightings</h1>
 #foreach($sight in $animal.getSightings())
-  <li>$sight.getLocation()</li>
-  <li>$sight.getSighted()</li>
+<div class="siting">
+  <p>Sighted by $sight.getRangerName() at the $sight.getLocation() quadrant on $sight.getSighted().getDateNew()</p>
+</div>
+
 #end

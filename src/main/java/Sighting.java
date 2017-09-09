@@ -3,6 +3,7 @@ import java.util.List;
 import org.sql2o.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.text.DateFormat;
 /**
  * Sighting
  */
@@ -32,6 +33,9 @@ private Timestamp sighted;
     }
     public Timestamp getSighted(){
         return sighted;
+    }
+    public String getDateNew(){
+      return DateFormat.getDateTimeInstance().format(sighted);
     }
     @Override
     public boolean equals(Object otherSighting){
