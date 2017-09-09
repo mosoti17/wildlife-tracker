@@ -33,9 +33,13 @@
     #if($animal.getSightings().size()==0)
       <br><br><h1>Sightings will apear here</h1>
       #else
+      <ol>
+
       #foreach($sight in $animal.getSightings())
-        <p>Sighted by $sight.getRangerName() at the $sight.getLocation() quadrant at $sight.getSighted()</p>
+        <li>Sighted by $sight.getRangerName() at the $sight.getLocation() quadrant at $sight.getSighted()</li><br>
       #end
+
+    </ol>
     #end
   </div>
 

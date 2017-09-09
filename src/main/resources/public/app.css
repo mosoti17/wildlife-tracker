@@ -3,6 +3,11 @@ h1{
   margin: 3%;
 
 }
+body{
+  background-image: url(images/wildlife-wide.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .normal{
   margin-right: 10%;
   background-color: #acb4c1;
