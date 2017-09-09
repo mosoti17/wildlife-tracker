@@ -79,6 +79,8 @@ public class App{
           Integer animalId =Integer.parseInt(request.queryParams("animalId"));
           Sighting newSighting = new Sighting(animalId,location,rangerName);
           newSighting.save();
+          model.put("normalanimals", NormalAnimal.all());
+          model.put("endangeredanimals", EndangeredAnimal.all());
           model.put("template", "templates/index.vtl");
           return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());

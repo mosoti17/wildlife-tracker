@@ -1,17 +1,42 @@
 <h1>$animal.getName()</h1>
+<div class="row">
+  <div class="col-md-6 offset-md-1">
+    <form  action="/normalanimals/$animal.getId()" method="post">
+      <div class="row">
+        <div class="col-md-9">
+          <div >
+            <label for="name">Animals Name</label>
+            <input type="text" name="name" class="form-control">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <br><button type="submit" class="btn btn-success" >Update Animal</button>
+        </div>
 
-<form  action="/normalanimals/$animal.getId()" method="post">
-  <div >
-    <label for="name">Animals Name</label>
-    <input type="text" name="name" class="form-control">
+      </div>
+
+
+    </form>
   </div>
-  <br><button type="submit" class="btn btn-success" >Update Animal</button>
-</form>
-<form action="/normalanimals/$animal.getId()/delete" method="post">
-    <br><br><button type="submit" class="btn btn-danger  btn-lg" id="delete">Delete Animal</button>
-</form>
+  <div class="col-md-2 offset-md-1">
+    <form action="/normalanimals/$animal.getId()/delete" method="post">
+        <br><button type="submit" class="btn btn-danger  btn-lg" id="delete">Delete Animal</button>
+    </form>
+  </div>
 
-#foreach($sight in $animal.getSightings())
-  <li>$sight.getLocation()</li>
-  <li>$sight.getSighted()</li>
-#end
+</div>
+
+
+<h1><span class="text-uppercase">$animal.getName()'s</span>  Sightings</h1>
+<div class="row">
+  <div class="col-md-8 offset-md-3">
+    #if($animal.getSightings().size()==0)
+      <br><br><h1>Sightings will apear here</h1>
+      #else
+      #foreach($sight in $animal.getSightings())
+        <p>Sighted by $sight.getRangerName() at the $sight.getLocation() quadrant at $sight.getSighted()</p>
+      #end
+    #end
+  </div>
+
+</div>

@@ -16,7 +16,7 @@ h1{
   margin-top: 4%;
 
 }
-#age, #health{
+#age, #health, .sight{
   width: 100%;
 }
 .display{
